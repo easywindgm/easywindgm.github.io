@@ -6,6 +6,21 @@
     <title>EASY WIND GENERAL MAINTENANCE</title>
     <link rel="icon" href="ew-logo-rbg-p.png">
     <link rel="shortcut icon" href="ew-logo-rbg-p.png">
+    <script>
+      var isNS = (navigator.appName == "Netscape") ? 1 : 0;
+      if(navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
+      function mischandler(){
+      return false;
+      }
+      function mousehandler(e){
+      var myevent = (isNS) ? e : event;
+      var eventbutton = (isNS) ? myevent.which : myevent.button;
+      if((eventbutton==2)||(eventbutton==3)) return false;
+      }
+      document.oncontextmenu = mischandler;
+      document.onmousedown = mousehandler;
+      document.onmouseup = mousehandler;
+      </script>
 </head>
 <body>
   <center>  <img src="img/e1.jpg"><img src="img/e2.jpg"></center>
