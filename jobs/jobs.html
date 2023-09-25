@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Application</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      var isNS = (navigator.appName == "PN") ? 1 : 0;
+      if(navigator.appName == "PN") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
+      function mischandler(){
+      return false;
+      }
+      function mousehandler(e){
+      var myevent = (isNS) ? e : event;
+      var eventbutton = (isNS) ? myevent.which : myevent.button;
+      if((eventbutton==2)||(eventbutton==3)) return false;
+      }
+      document.oncontextmenu = mischandler;
+      document.onmousedown = mousehandler;
+      document.onmouseup = mousehandler;
+      </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="apply_box">
+        <h1>
+          Career Opportunities
+          <span class="title_small"></span>
+        </h1>
+        <form id="submit-form" action="">
+          <div class="form_container">
+            <div class="form_control">
+              <label for="first_name"> First Name </label>
+              <input
+                id="first_name"
+                name="first_name"
+                placeholder="Enter First Name..."
+             required />
+            </div>
+            <div class="form_control">
+              <label for="last_name"> Last Name </label>
+              <input
+                id="last_name"
+                name="last_name"
+                placeholder="Enter Last Name..."
+             required />
+            </div>
+            <div class="form_control">
+              <label for="email"> Email </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter Email..."
+             required />
+            </div>
+            <div class="form_control">
+              <label for="job_role"> Job Role </label>
+              <select id="job_role" name="job_role">
+                <option value="">Select Job Role</option>
+                <option value="marketing_manager">Marketing Manager</option>
+                <option value="accountant">Accountant</option>
+                <option value="sales">Sales</option>
+                <option value="civil_engineer">Civil Engineer</option>
+                <option value="customer_service">Customer Service</option>
+                <option value="engineer">Engineer</option>
+                <option value="receptionist">Receptionist</option>
+                <option value="driver">Driver</option>
+              </select>
+            </div>
+            <div class="textarea_control">
+              <label for="address"> Address </label>
+              <textarea
+                id="address"
+                name="address"
+                row="4"
+                cols="50"
+                placeholder="Enter Address"
+             required ></textarea>
+            </div>
+            <div class="form_control">
+              <label for="city"> City </label>
+              <input id="city" name="city" placeholder="Enter City Name..." />
+            </div>
+            <div class="form_control">
+              <label for="Phone Number"> Phone Number </label>
+              <input
+                type="number"
+                id="phonenumber"
+                name="phonenumber"
+                placeholder="Enter Phone Number..."
+             required />
+            </div>
+            <div class="form_control">
+              <label for="date"> Date </label>
+              <input value="" type="date" id="date" name="date" />
+            </div>
+            <div class="form_control">
+              <label for="upload"> Upload Your CV </label>
+              <input type="file" id="upload" name="upload" />
+            </div>
+          </div>
+          <div class="button_container">
+            <button type="submit">Apply Now</button>
+          </div>
+        </form>
+
+        <script>
+          $("#submit-form").submit((e)=>{
+          e.preventDefault()
+          $.ajax({
+          url:"https://script.google.com/macros/s/AKfycbyqqTpfztck7hNcM9J3lIRMa4ZxBZ8Gdfjfr1G1LYkwswV_ekkmQlx4xTy1l-eA8702/exec",
+          data:$("#submit-form").serialize(),
+          method:"post",
+          success:function (response){
+          alert("Our HR team will be in contact with you shortly. Thank you!")
+          window.location.reload()
+          //window.location.href="https://google.com"
+          },
+          error:function (err){
+          alert("Something Error")
+          
+          }
+          })
+          })
+          </script>
+
+      </div>
+    </div>
+  </body>
+</html>
